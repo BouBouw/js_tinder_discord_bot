@@ -9,7 +9,7 @@ const colors = require('colors');
 
 const app = express();
 
-module.exports.load = async(client, con) => {
+async function load (client, con) {
     app.use(bodyParser.urlencoded({ extended : true}));;
     app.use(bodyParser.json());
     app.engine('html', ejs.renderFile);
@@ -58,5 +58,9 @@ module.exports.load = async(client, con) => {
     app.get('/subs', require('./routes/main'));
     app.get('/test', require('./routes/main'));
 
-    app.listen(90, () => console.log(`WEB > `.bold.white + `Web server has been started.`.bold.green ));
+    app.listen(90, () => console.log(`[WEB] `.bold.green + `Web server has been started.`.bold.white ));
+}
+
+module.exports = {
+    load
 }

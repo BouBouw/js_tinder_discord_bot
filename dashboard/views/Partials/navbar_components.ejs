@@ -19,6 +19,21 @@
         position: absolute;
         width: 185px;
     }
+    .popup__res {
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        display: none;
+        min-width: 120px;
+        right: 0;
+        position: absolute;
+        width: 100%;
+        top:110%;
+    }
 
     .popup a {
         padding: 5px;
@@ -30,12 +45,43 @@
     .popup a:hover {
         background-color: #f1f1f1;
     }
+    
+    #navLinks {
+        display: flex;
+        z-index: 1000;
+    }
+    @media screen and ( max-width: 1024px) {
+        #navLinks{
+        flex-direction: column;
+        display: none;
+        position: absolute;
+        top:9%;
+        left:0;
+        width: 100%;
+        height: fit-content;
+        background-color: #1e40af;
+    }
+        #navLinks.active {
+            display: flex;
+        }
+    }
+    
+    
+
 </style>
 
 <script>
     // Fonction pour afficher ou masquer le popup
     function togglePopup() {
         var popup = document.getElementById("popup");
+        if (popup.style.display === "block") {
+            popup.style.display = "none";
+        } else {
+            popup.style.display = "block";
+        }
+    }
+    function togglePopupRes() {
+        var popup = document.getElementById("popup-res");
         if (popup.style.display === "block") {
             popup.style.display = "none";
         } else {
@@ -53,6 +99,12 @@
     }
     select.forEach((item) => item.addEventListener('click', activeLink));
 
+    // Hamburger Menu
+    var menuOpened = false;
+    function showMenu(){
+        let list = document.getElementById('navLinks');
+        list.classList.toggle('active')
+      }
 </script>
 <script>
     const slogans = [
@@ -92,7 +144,6 @@
         "Rencontrez des gens qui partagent vos intérêts !",
         "Donnez une chance à l'amour !",
         "Rencontrez des gens intéressants autour de vous !",
-        "Rejoignez notre site pour rencontrer votre futur amour !",
         "L'amour est à portée de clic !",
         "Découvrez des personnes qui vous ressemblent !",
         "Laissez-vous tenter par une belle rencontre !",
@@ -111,13 +162,10 @@
         "Rencontrez des personnes authentiques !",
         "Donnez une chance à l'amour en vous inscrivant sur notre site !",
         "L'amour est un clic loin de vous !",
-        "Découvrez des personnes avec qui vous pouvez construire une relation sérieuse !",
-        "Rejoignez une communauté de célibataires motivés pour trouver l'amour !",
         "Rencontrez des personnes qui vous feront vibrer !",
         "L'amour est à portée de main, inscrivez-vous maintenant !",
         "Rencontrez des célibataires qui cherchent la même chose que vous !",
         "Trouvez l'amour en toute simplicité avec notre site de rencontre !",
-        "Donnez une chance à l'amour en rejoignant notre communauté de célibataires !"
     ];
 
     function changeSlogan() {
@@ -126,31 +174,52 @@
         sloganElement.textContent = "Spliff-Splouf, " + slogans[randomIndex];
     }
 
-    // Mettez à jour le slogan toutes les 5 minutes
+    // Update the slogan every 5 minutes
     setInterval(changeSlogan, 1 * 60 * 1000);
 </script>
 
 <header class="bg-blue-600">
-    <nav class="container mx-auto px-6 py-4">
+    <nav class=" lg:mx-auto mx-0 px-6 py-4 ">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-white text-3xl font-bold">Spliff-Splouf</h1>
-                <p class="text-white text-sm" id="slogan">Spliff-Splouf, exactement ce que je cherche!</p>
+                <h1 class="text-white lg:text-3xl  text-xl font-bold  ">Spliff-Splouf</h1>
+                <p class="text-white lg:text-sm text-xs sm:max-w-full max-w-[200px]	" id="slogan">Spliff-Splouf, exactement ce que je cherche!</p>
             </div>
-            <div class="hidden sm:flex">
+            <div  id="navLinks"   >
                 <a href="/"
-                    class="<%= title === 'home' ? 'bg-white text-blue-500 font-bold rounded-md mr-5 px-4 py-3' : 'nav-items text-white px-4 py-3 rounded-md mr-4 nav-link' %>">Accueil</a>
+                    class="<%= title === 'home' ? ' bg-white text-blue-500 font-bold lg:rounded-md lg:mr-5 px-4 py-3 ' : ' nav-items text-white px-4 py-3 lg:rounded-md lg:mr-4 nav-link ' %>">Accueil</a>
                 <a href="/docs"
-                    class="<%= title === 'docs' ? 'bg-white text-blue-500 font-bold rounded-md px-4 py-3' : 'nav-items text-white px-4 py-3 rounded-md mr-4 nav-link' %>">Documentation</a>
+                    class="<%= title === 'docs' ? 'bg-white text-blue-500 font-bold lg:rounded-md px-4 py-3' : 'nav-items text-white px-4 py-3 lg:rounded-md lg:mr-4 nav-link' %>">Documentation</a>
                 <a href="/subs"
-                    class="<%= title === 'subs' ? 'bg-white text-blue-500 font-bold rounded-md px-4 py-3' : 'nav-items text-white px-4 py-3 rounded-md mr-4 nav-link' %>">Abonnement</a>
+                    class="<%= title === 'subs' ? 'bg-white text-blue-500 font-bold lg:rounded-md px-4 py-3' : 'nav-items text-white px-4 py-3 lg:rounded-md lg:mr-4 nav-link' %>">Abonnement</a>
                 <a href="https://discord.gg/GxjKgRvA8e"
-                    class="text-white px-4 py-3 rounded-md mr-4 nav-link">Contact</a>
+                    class="text-white px-4 py-3 rounded-md lg:ml-4 nav-link">Contact</a>
+                <hr class="lg:hidden block">
+                <% if(user) { %>
+                        <button onclick="togglePopupRes()"
+                            class="flex lg:hidden flex-row space-x-2 ml-auto m-4 mr-auto items-center relative w-fit bg-indigo-500 rounded-md">
+                            <div class="lg:p-2 flex lg:hidden flex-row space-x-2 items-center p-[3px]">
+                                <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png?width=160&height=160/" alt=""
+                                    class="rounded-full w-10 h-10">
+                                <span id="username" class="font-bold text-white">
+                                    <%= user.username %>#<%= user.discriminator %>
+                                </span>
+                            </div>
+                            <div class="popup__res top-10" id="popup-res">
+                                <a href="/profile">Mon profile</a>
+                                <a href="/settings">Mes paramètres</a>
+                                <a href="/logout" class="text-red-500">Déconnexion</a>
+                            </div>
+                        </button>
+                        <% } else { %>
+                            <div class="hidden"></div>
+                            <% } %>
             </div>
+            
             <% if(user) { %>
                 <button onclick="togglePopup()"
                     class="flex flex-row space-x-2 items-center relative bg-blue-800 rounded-md">
-                    <div class="p-2 flex flex-row space-x-2 items-center">
+                    <div class="lg:p-2 lg:flex hidden flex-row space-x-2 items-center p-[3px]">
                         <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png?width=160&height=160/" alt=""
                             class="rounded-full w-10 h-10">
                         <span id="username" class="font-bold text-white">
@@ -166,6 +235,11 @@
                 <% } else { %>
                     <div class="hidden"></div>
                     <% } %>
+            <div class="lg:hidden flex-col " onclick="showMenu()">
+                <div class="h-1 w-7 bg-white  mb-1  "></div>
+                <div class="h-1 w-7 bg-white  mb-1 "></div>
+                <div class="h-1 w-7 bg-white  mb-1 "></div>
+            </div>        
         </div>
     </nav>
 </header>

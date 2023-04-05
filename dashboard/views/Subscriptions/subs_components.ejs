@@ -7,12 +7,303 @@
 
         <link rel="icon" type="image/x-icon" href="../public/icon.ico">
         <title>Spliff-Splouf - Profile</title>
+        <script src="https://kit.fontawesome.com/eaa7f1e36a.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <%- include('../Partials/navbar_components', { title:'subs'}) %>
-        <div>
+        <style>
+
+            :root {
+            --accent-color: #1e40af;
+            }
+
+            * {
+            box-sizing: border-box;
+            }
+
+
+            .floating-heart {
+            position: absolute;
+            animation: 2s linear heart normal infinite;
+            top: 49%;
+            color: var(--accent-color);
+            font-size: 25px;
+            z-index: -1;
+            }
+
+            .floating-heart:nth-child(1) {
+            left: calc(50% - 50px);
+            scale: 1.1;
+            }
+
+            .floating-heart:nth-child(2) {
+            left: calc(50% - 25px);
+            animation-delay: 0.66s;
+            }
+
+            .floating-heart:nth-child(3) {
+            left: 50%;
+            animation-delay: 1.33s;
+            scale: 1.2;
+            }
+
+            @keyframes heart {
+            0% {
+                transform: rotate(10deg);
+                opacity: 0;
+            }
+
+            25% {
+                transform: rotate(-10deg);
+                opacity: 1;
+            }
+
+            75% {
+                transform: rotate(10deg);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: rotate(-10deg);
+                opacity: 0;
+                top: 10%;
+            }
+            }
+
+            .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-color);
+            color: #fff;
+            border-radius: 50px;
+            position: relative;
+            }
+
+
+
+            .counter-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            font-size: 15px;
+            }
+
+            .counter-container i {
+            margin: 10px;
+            font-size: 20px;
+            }
+
+            .counter-container .counter {
+            width: 45px;
+            font-weight: 900;
+            }
+
             
+
+        </style>
+        
+        <%- include('../Partials/navbar_components', { title:'subs'}) %>
+        
+        <div class="p-5 flex flex-col items-center justify-center w-full relative mb-0">
+            <h1 class="font-serif mb-5 text-center text-2xl text-blue-800 lg:text-5xl">L'amour</h1>
+            <p class="font-thin text-blue-600 mb-4">pour tout le monde</p>
+
+                <!--Counter Effect-->
+                <i class="fa-solid fa-heart floating-heart"></i>
+                <i class="fa-solid fa-heart floating-heart"></i>
+                <i class="fa-solid fa-heart floating-heart"></i>
+                <div class="box">
+                <div class="counter-container">
+                    <i class="fa-solid fa-comment"></i>
+                    <div class="counter" data-target="600"></div>
+                </div>
+                <div class="counter-container">
+                    <i class="fa-solid fa-heart"></i>
+                    <div class="counter" data-target="3600"></div>
+                </div>
+                <div class="counter-container">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="counter" data-target="1200"></div>
+                </div>
+                </div>       
+                
+                 
+        </div>
+        <div>
+            <div class="p-5 flex items-center justify-center translate-y-[-30px]">
+                <div class="flex flex-col space-y-10 md:flex-row md:space-x-24 md:space-y-0 overflow-hidden">
+                    <div class="bg-blue-800 rounded-md ">
+                        <div class="p-3">
+                            <div class="flex flex-col space-y-5 items-center justify-center w-52 ">
+                                <span class="text-white font-bold">Mensuel</span>
+                                <small class="text-white">4.99€ / mois</small>
+                                <hr class="border-1 border-white w-2/4">
+                                <span class="font-bold text-white">Avantages :</span>
+                                <div>
+                                    <ul class="flex flex-col space-y-3 items-center justify-center">
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Réveler les profils</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Like illimités</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Recherches ciblées</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Ajouts des tags</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">6 photos</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr class="border-1 border-white w-2/4">
+                                <button class="bg-green-500 hover:bg-green-600 text-blue-800 hover:text-white rounded-md w-36 h-10">
+                                    <span class="p-2 font-bold">Acheter</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-800 rounded-md">
+                        <div class="p-3">
+                            <div class="flex flex-col space-y-5 items-center justify-center w-52">
+                                <span class="text-white font-bold">Annuel</span>
+                                <small class="text-white">59.99€ / an</small>
+                                <hr class="border-1 border-white w-2/4">
+                                <span class="font-bold text-white">Avantages :</span>
+                                <div class="">
+                                    <ul class="flex flex-col space-y-3 items-center justify-center">
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Réveler les profils</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Like illimités</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Recherches ciblées</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Ajouts des tags</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">6 photos</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr class="border-1 border-white w-2/4">
+                                <button class="bg-green-500 hover:bg-green-600 text-blue-800 hover:text-white rounded-md w-36 h-10">
+                                    <span class="p-2 font-bold">Acheter</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-800 rounded-md">
+                        <div class="p-3">
+                            <div class="flex flex-col space-y-5 items-center justify-center w-52">
+                                <span class="text-white font-bold">A vie</span>
+                                <small class="text-white">129.99€</small>
+                                <hr class="border-1 border-white w-2/4">
+                                <span class="font-bold text-white">Avantages :</span>
+                                <div class="">
+                                    <ul class="flex flex-col space-y-3 items-center justify-center">
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Réveler les profils</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Like illimités</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Recherches ciblées</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">Ajouts des tags</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="flex flex-row space-x-2 items-center">
+                                                <i class="fa-solid fa-check" style="color: #43db5c;"></i>
+                                                <span class="text-white">6 photos</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr class="border-1 border-white w-2/4">
+                                <button class="bg-green-500 hover:bg-green-600 text-blue-800 hover:text-white rounded-md w-36 h-10">
+                                    <span class="p-2 font-bold">Acheter</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <%- include('../Partials/footer_components') %>
+        <script>
+            const counters = document.querySelectorAll(".counter");
+            counters.forEach((counter) => {
+            counter.innerText = "0";
+
+            const updateCounter = () => {
+                const target = +counter.getAttribute("data-target");
+                const c = +counter.innerText;
+
+                const increment = target / 600;
+
+                if (c < target) {
+                counter.innerText = `${Math.ceil(c + increment)}`;
+                setTimeout(updateCounter, 10);
+                } else {
+                counter.innerText = target;
+                }
+            };
+
+            updateCounter();
+            });
+
+
+        </script>
     </body>
 </html>

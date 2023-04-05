@@ -80,7 +80,7 @@ execute: async (client, interaction, args, con) => {
                     }
                 })
             } else {
-                console.log(results[0]);
+                // console.log(results[0]);
 
                 let gender;
                 let sexual_orientation;

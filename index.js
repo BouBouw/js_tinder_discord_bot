@@ -1,4 +1,5 @@
 const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js');
+const { join } = require('node:path')
 const mysql = require('mysql2');
 
 const config = require('./config.json');
@@ -22,11 +23,10 @@ const client = new Client({
     ]
 });
 
-module.exports = client;
 
 client.commands = new Collection();
 
-const con = mysql.createConnection({
+const connection = mysql.createConnection({
     host: config.mysql.host,
     user: config.mysql.user,
     password: config.mysql.password,
@@ -35,12 +35,23 @@ const con = mysql.createConnection({
 })
 
 client.on('ready', async () => {
+    const { Handler } = await require('./handler');
+    const { execute } = await require(join(process.cwd(), 'events', 'client', 'ready.js'));
 
-    require("./handler")(client, con);
+    const handler = new Handler(client, connection);
 
-    const readyEvent = require('./events/client/ready.js');
-    await readyEvent.execute(client);
+    const commands = await handler.loadCommands();
+    client.application.commands.set(commands.flat());
 
+    await handler.loadEvents();
+
+    const { load } = await require('./dashboard/index');
+    load(client, connection);
+    // await handler.createWebServer();
+
+    await execute(client);
 })
 
 client.login(config.token)
+
+module.exports = client;

@@ -9,72 +9,94 @@
         <link rel="icon" type="image/x-icon" href="../public/icon.ico">
         <title>Spliff-Splouf - Profile</title>
     </head>
+    <script>
+        let addr;
+
+        function doGeocode() {
+            const element = document.getElementById('address');
+
+            fetch(`https://api-adresse.data.gouv.fr/search/?q=${element.value}`, (err, result) => {
+                addr = result.features[0].properties;
+                
+                element.innerHTML = `${addr}`;
+            })
+        }
+    </script>
     <body>
         <%- include('../Partials/navbar_components', { title: "profile" }) %>
         <div class="flex items-center justify-center mt-10 mb-10">
             <div class="flex items-center bg-blue-600/80 rounded-md">
                 <div class="p-5">
-                    <div class="flex flex-col space-y-3 items-center">
+                    <div class="flex flex-col space-y-3 items-center m-5">
                         <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png?width=160&height=160/" alt="" class="w-10 h-10 rounded-full">
                         <span class="font-bold text-white"><%= user.username %>#<%= user.discriminator %></span>
-                        <div class="flex justify-center">
-                            <div class="p-3 w-64 flex flex-col space-y-1 items-center bg-slate-900/60 rounded-md">
-                                <span class="text-white font-bold">Biographie :</span>
-                                <span><%= result[0].bio %></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-5 mb-5">
-                        <div class="flex flex-col space-y-5 items-center justify-center">
-                            <div class="p-3 w-64 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
-                                <span class="text-white font-bold">Prénom :</span>
-                                <span><%= result[0].first_name %></span>
-                            </div>
-                            <div class="p-3 w-64 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
-                                <span class="text-white font-bold">Anniversaire :</span>
-                                <% const birthday=new Date(result[0].birthday_date); const options={ day: 'numeric' , month: 'numeric' , year: 'numeric'
+                        <div class="flex flex-col justify-center">
+                            <form class="flex flex-col space-y-5">
+                                <div class="flex flex-col space-y-3 bg-slate-900/40 rounded-lg">
+                                    <label for="" class="font-bold text-white mt-2 flex items-center justify-center">Biographie :</label>
+                                    <input type="text" value="<%= result[0].bio %>" class="p-2 bg-transparent border-2 border-gray-100/20 rounded">
+                                </div>
+                                <div class="flex flex-col space-y-3 bg-slate-900/40 rounded-lg">
+                                    <label for="" class="font-bold text-white mt-2 flex items-center justify-center">Prénom :</label>
+                                    <input type="text" value="<%= result[0].first_name %>" class="p-2 bg-transparent border-2 border-gray-100/20 rounded">
+                                </div>
+                                <div class="flex flex-col space-y-3 bg-slate-900/40 rounded-lg">
+                                    <label for="" class="font-bold text-white mt-2 flex items-center justify-center">Anniversaire :</label>
+                                    <% const birthday=new Date(result[0].birthday_date); const options={ day: 'numeric' , month: 'numeric' , year: 'numeric'
                                     }; const formattedDate=birthday.toLocaleDateString('fr-FR', options); %>
-                                    <span>
-                                        <%= formattedDate %>
-                                    </span>
-                            </div>
-                            <div class="flex flex-row space-x-5 items-center justify-center">
-                                <div class="p-3 w-32 h-24 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
-                                    <span class="text-white font-bold">Genre :</span>
-                                    <span>
-                                        <%= result[0].gender %>
-                                    </span>
+                                    <input type="text" value="<%= formattedDate %>" class="p-2 bg-transparent border-2 border-gray-100/20 rounded">
                                 </div>
-                                <div class="p-3 w-32 h-24 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
-                                    <span class="text-white font-bold">Orientation :</span>
-                                    <span>
-                                        <%= result[0].sexual_orientation %>
-                                    </span>
+                                <div class="flex flex-col space-y-3 bg-slate-900/40 rounded-lg">
+                                    <label for=""s class="font-bold text-white mt-2 flex items-center justify-center">Localisation :</label>
+                                    <input id="address" type="text" value="" onchange="doGeocode(addr)" class="p-2 bg-transparent border-2 border-gray-100/20 rounded">
                                 </div>
-                                <div class="p-3 w-32 h-24 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
-                                    <span class="text-white font-bold">Recherche :</span>
-                                    <span>
-                                        <%= result[0].looking_for %>
-                                    </span>
+                                <div class="flex flex-row space-x-10 items-center justify-center">
+                                    <div class="bg-slate-900/40 rounded-lg">
+                                        <div class="p-2">
+                                            <div class="flex flex-col space-y-3 items-center">
+                                                <label for="" class="font-bold text-white">Genre :</label>
+                                                <select class="bg-slate-900/30 text-white rounded-md w-32">
+                                                    <option><%= result[0].gender %></option>
+                                                    <option>Homme</option>
+                                                    <option>Femme</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-slate-900/40 rounded-lg">
+                                        <div class="p-2">
+                                            <div class="flex flex-col space-y-3 items-center">
+                                                <label for="" class="font-bold text-white">Orientation :</label>
+                                                <select class="bg-slate-900/30 text-white rounded-md w-32">
+                                                    <option><%= result[0].sexual_orientation %></option>
+                                                    <option>Hétérosexuel</option>
+                                                    <option>Homosexuel</option>
+                                                    <option>Bisexuel</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-slate-900/40 rounded-lg">
+                                        <div class="p-2">
+                                            <div class="flex flex-col space-y-3 items-center">
+                                                <label for="" class="font-bold text-white">Recherche :</label>
+                                                <select class="bg-slate-900/30 text-white rounded-md w-32">
+                                                    <option><%= result[0].looking_for %></option>
+                                                    <option>Amitié</option>
+                                                    <option>Amour</option>
+                                                    <option>Intime</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="p-3 w-32 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
-                                <span class="text-white font-bold">Localisation :</span>
-                                <span>
-                                    <%= JSON.parse(result[0].location).city.name %>
-                                </span>
-                                <span>
-                                    <%= JSON.parse(result[0].location).city.zip %>
-                                </span>
-                                <span>
-                                    <%= JSON.parse(result[0].location).city.country %>
-                                </span>
-                            </div>
+                            </form>
+
                         </div>
                     </div>
                     <div class="flex items-center justify-center">
-                        <button class="bg-blue-800 rounded-md">
-                            <span class="p-3 text-white font-bold">Gérer son profil</span>
+                        <button class="bg-green-500 hover:bg-green-600 rounded-md w-ful h-12 disabled:bg-red-500 disabled:opacity-50" disabled>
+                            <span class="p-3 text-white font-bold">Sauvegarder son profil</span>
                         </button>
                     </div>
                 </div>
