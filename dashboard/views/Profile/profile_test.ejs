@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="icon" type="image/x-icon" href="../public/icon.ico">
+        <title>Spliff-Splouf - Profile</title>
+    </head>
+    <body>
+        <%- include('../Partials/navbar_components', { title: "profile" }) %>
+        <div class="flex items-center justify-center mt-10 mb-10">
+            <div class="flex items-center bg-blue-600/80 rounded-md">
+                <div class="p-5">
+                               
+                    <div class="mt-5 mb-5">
+                        <div class="flex flex-row space-x-10 items-center justify-center">
+                            <div class="">
+                                <ul class="flex flex-col space-y-1 items-center">
+                                    <li>
+                                        <span class="">Prénom :</span>
+                                    </li>
+                                    <li>
+                                        <div class="">
+                                            <span><%= result[0] %></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="">
+                                <ul class="flex flex-col space-y-1 items-center">
+                                    <li>
+                                        <span class="">Anniverssaire :</span>
+                                    </li>
+                                    <li>
+                                        b
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <button class="bg-blue-800 rounded-md">
+                            <span class="p-3 text-white font-bold">Gérer son profil</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../Partials/footer_components') %>
+    </body>
+</html>

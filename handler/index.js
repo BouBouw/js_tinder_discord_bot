@@ -51,5 +51,12 @@ module.exports = (client, con) => {
         })
     }
     loadEvents();
-    console.log(`•----------•`.bold.black)
+    console.log(`•----------•`.bold.black);
+
+    const loadWebServer = () => {
+        const { load } = require('../dashboard/index.js');
+        load(client, con)
+    }
+    loadWebServer();
+    console.log(`•----------•`.bold.black);
 }

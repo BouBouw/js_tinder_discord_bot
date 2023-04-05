@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="icon" type="image/x-icon" href="../public/icon.ico">
+        <title>Spliff-Splouf • Discord Bot</title>
+    </head>
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+    <body>
+        <%- include('Partials/navbar_components', { title:'home'}) %>
+        <main class="container mx-auto mt-16">
+            <% if(user) { %>
+                <div class="text-center mb-16">
+                    <div class="flex items-center justify-center">
+                        <svg width="50" height="50" viewBox="0 0 1012 1033" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M758.977 344.406L506.132 0L253 344.266L505.775 688.664L758.977 344.406ZM1012 688.706L759.136 344.35L505.954 688.615L758.758 1033L1012 688.706Z" fill="#2947E6"/>
+                            <path d="M506 688.532L253.194 344L0 688.44L252.776 1033L506 688.532Z" fill="url(#paint0_linear_3_64)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_3_64" x1="252.539" y1="1032.88" x2="252.999" y2="344" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#4265BE"/>
+                            <stop offset="0.947917" stop-color="#08186B"/>
+                            </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="mt-5">
+                        <h2 class="text-4xl font-bold mb-8">Trouvez l'amour sur Spliff-Splouf</h2>
+                        <p class="text-xl mb-8">Rencontrez exactement ce que vous recherchez !</p>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="text-center mb-16">
+                    <div class="flex items-center justify-center">
+                        <svg width="50" height="50" viewBox="0 0 1012 1033" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M758.977 344.406L506.132 0L253 344.266L505.775 688.664L758.977 344.406ZM1012 688.706L759.136 344.35L505.954 688.615L758.758 1033L1012 688.706Z" fill="#2947E6"/>
+                            <path d="M506 688.532L253.194 344L0 688.44L252.776 1033L506 688.532Z" fill="url(#paint0_linear_3_64)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_3_64" x1="252.539" y1="1032.88" x2="252.999" y2="344" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#4265BE"/>
+                            <stop offset="0.947917" stop-color="#08186B"/>
+                            </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="mt-5">
+                        <h2 class="text-4xl font-bold mb-8">Trouvez l'amour sur Spliff-Splouf</h2>
+                        <p class="text-xl mb-8">Connectez-vous dès maintenant pour rencontrer des célibataires près de chez vous.</p>
+                        <a href="https://discord.com/api/oauth2/authorize?client_id=994388669605625876&redirect_uri=http%3A%2F%2Flocalhost%3A90%2Flogin&response_type=code&scope=identify%20guilds%20email" target="_top" class="bg-blue-600 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-md">Connectez-vous</a>
+                    </div>
+                </div>
+            <% } %> 
+            
+            <section class="mb-16 p-5">
+                <h3 class="text-3xl font-bold mb-6">Derniers membres</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="bg-white p-4 rounded-md shadow-md">
+                        <img class="w-full h-48 object-cover mb-4 rounded-md" src="https://via.placeholder.com/300x300" alt="Membre 1">
+                        <h4 class="text-xl font-bold mb-2">Membre 1</h4>
+                        <p class="text-gray-600">Paris, France</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-md shadow-md">
+                        <img class="w-full h-48 object-cover mb-4 rounded-md" src="https://via.placeholder.com/300x300" alt="Membre 2">
+                        <h4 class="text-xl font-bold mb-2">Membre 2</h4>
+                        <p class="text-gray-600">Lyon, France</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-md shadow-md">
+                        <img class="w-full h-48 object-cover mb-4 rounded-md" src="https://via.placeholder.com/300x300" alt="Membre 3">
+                        <h4 class="text-xl font-bold mb-2">Membre 3</h4>
+                        <p class="text-gray-600">Marseille, France</p>
+                    </div>
+    
+                    <div class="bg-white p-4 rounded-md shadow-md">
+                        <img class="w-full h-48 object-cover mb-4 rounded-md" src="https://via.placeholder.com/300x300" alt="Membre 4">
+                        <h4 class="text-xl font-bold mb-2">Membre 4</h4>
+                        <p class="text-gray-600">Toulouse, France</p>
+                    </div>
+                </div>
+            </section>
+    
+            <section class="p-5">
+                <h3 class="text-3xl font-bold mb-6">Avis</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-md shadow-md">
+                        <p class="text-gray-600 mb-4">"Spliff-Splouf m'a permis de rencontrer l'amour de ma vie. Je suis si heureux de faire partie de cette communauté !" - Utilisateur 1</p>
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 object-cover rounded-full mr-4" src="https://via.placeholder.com/80x80" alt="Utilisateur 1">
+                            <div>
+                                <h4 class="text-xl font-bold">Utilisateur 1</h4>
+                                <p class="text-gray-600">Paris, France</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-md shadow-md">
+                        <p class="text-gray-600 mb-4">"J'ai rencontré tellement de personnes formidables sur Spliff-Splouf. C'est un site de rencontre incroyable !" - Utilisateur 2</p>
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 object-cover rounded-full mr-4" src="https://via.placeholder.com/80x80" alt="Utilisateur 2">
+                            <div>
+                                <h4 class="text-xl font-bold">Utilisateur 2</h4>
+                                <p class="text-gray-600">Lyon, France</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+    <%- include('Partials/footer_components') %>
+</html>

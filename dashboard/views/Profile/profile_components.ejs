@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" type="image/x-icon" href="../public/icon.ico">
+    <title>Spliff-Splouf - Profile</title>
+</head>
+
+<body>
+    <%- include('../Partials/navbar_components') %>
+        <div class="">
+            <div class="p-5">
+                <div class="container my-5">
+                    <div class="row">
+                        <div class="col-lg-4 mb-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" width="128"
+                                        height="128">
+                                    <h5 class="card-title">
+                                        <%= user.username %> <span class="badge bg-secondary">
+                                                <%= user.age %> ans
+                                            </span>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= user.bio %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="text-2xl font-bold mb-4">Profil</h2>
+                                    <div class="bg-white p-8 rounded-md shadow-md">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <div>
+                                                <div class="mb-4">
+                                                    <strong>Nom</strong>
+                                                    <p class="text-gray-600">
+                                                        <%= user.username %>
+                                                    </p>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <strong>Email</strong>
+                                                    <p class="text-gray-600">
+                                                        <%= user.email %>
+                                                    </p>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <strong>Date de naissance</strong>
+                                                    <p class="text-gray-600">
+                                                        <%= user.birthdate %>
+                                                    </p>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <strong>Genre</strong>
+                                                    <p class="text-gray-600">
+                                                        <%= user.gender %>
+                                                    </p>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <strong>Ville</strong>
+                                                    <p class="text-gray-600">
+                                                        <%= user.city %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="text-center">
+                                                    <h2 class="text-4xl font-bold mb-8">Mon profil</h2>
+                                                    <form class="max-w-lg mx-auto">
+                                                        <div class="mb-6">
+                                                            <label class="block text-gray-700 font-bold mb-2" for="bio">
+                                                                Biographie
+                                                            </label>
+                                                            <textarea
+                                                                class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-600"
+                                                                id="bio" name="bio" rows="5"
+                                                                placeholder="Décrivez-vous en quelques mots..."></textarea>
+                                                        </div>
+                                                        <div class="mb-6">
+                                                            <label class="block text-gray-700 font-bold mb-2"
+                                                                for="hobbies">
+                                                                Hobbies
+                                                            </label>
+                                                            <input
+                                                                class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-600"
+                                                                id="hobbies" type="text" name="hobbies"
+                                                                placeholder="Listez vos hobbies préférés...">
+                                                        </div>
+                                                        <div class="mb-6">
+                                                            <label class="block text-gray-700 font-bold mb-2"
+                                                                for="passions">
+                                                                Passions
+                                                            </label>
+                                                            <input
+                                                                class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-600"
+                                                                id="passions" type="text" name="passions"
+                                                                placeholder="Listez vos passions...">
+                                                        </div>
+                                                        <div class="mb-6">
+                                                            <label class="block text-gray-700 font-bold mb-2"
+                                                                for="tastes">
+                                                                Goûts
+                                                            </label>
+                                                            <input
+                                                                class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-600"
+                                                                id="tastes" type="text" name="tastes"
+                                                                placeholder="Listez vos goûts...">
+                                                        </div>
+                                                        <div class="flex justify-center">
+                                                            <button
+                                                                class="bg-blue-600 text-white font-bold px-8 py-3 rounded-md"
+                                                                type="submit">Enregistrer</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../Partials/footer_components') %>
+</body>
+
+</html>
