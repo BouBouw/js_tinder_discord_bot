@@ -14,30 +14,61 @@
         <div class="flex items-center justify-center mt-10 mb-10">
             <div class="flex items-center bg-blue-600/80 rounded-md">
                 <div class="p-5">
-                               
-                    <div class="mt-5 mb-5">
-                        <div class="flex flex-row space-x-10 items-center justify-center">
-                            <div class="">
-                                <ul class="flex flex-col space-y-1 items-center">
-                                    <li>
-                                        <span class="">Prénom :</span>
-                                    </li>
-                                    <li>
-                                        <div class="">
-                                            <span><%= result[0] %></span>
-                                        </div>
-                                    </li>
-                                </ul>
+                    <div class="flex flex-col space-y-3 items-center">
+                        <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png?width=160&height=160/" alt="" class="w-10 h-10 rounded-full">
+                        <span class="font-bold text-white"><%= user.username %>#<%= user.discriminator %></span>
+                        <div class="flex justify-center">
+                            <div class="p-3 w-64 flex flex-col space-y-1 items-center bg-slate-900/60 rounded-md">
+                                <span class="text-white font-bold">Biographie :</span>
+                                <span><%= result[0].bio %></span>
                             </div>
-                            <div class="">
-                                <ul class="flex flex-col space-y-1 items-center">
-                                    <li>
-                                        <span class="">Anniverssaire :</span>
-                                    </li>
-                                    <li>
-                                        b
-                                    </li>
-                                </ul>
+                        </div>
+                    </div>
+                    <div class="mt-5 mb-5">
+                        <div class="flex flex-col space-y-5 items-center justify-center">
+                            <div class="p-3 w-64 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
+                                <span class="text-white font-bold">Prénom :</span>
+                                <span><%= result[0].first_name %></span>
+                            </div>
+                            <div class="p-3 w-64 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
+                                <span class="text-white font-bold">Anniversaire :</span>
+                                <% const birthday=new Date(result[0].birthday_date); const options={ day: 'numeric' , month: 'numeric' , year: 'numeric'
+                                    }; const formattedDate=birthday.toLocaleDateString('fr-FR', options); %>
+                                    <span>
+                                        <%= formattedDate %>
+                                    </span>
+                            </div>
+                            <div class="flex flex-row space-x-5 items-center justify-center">
+                                <div class="p-3 w-32 h-24 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
+                                    <span class="text-white font-bold">Genre :</span>
+                                    <span>
+                                        <%= result[0].gender %>
+                                    </span>
+                                </div>
+                                <div class="p-3 w-32 h-24 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
+                                    <span class="text-white font-bold">Orientation :</span>
+                                    <span>
+                                        <%= result[0].sexual_orientation %>
+                                    </span>
+                                </div>
+                                <div class="p-3 w-32 h-24 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
+                                    <span class="text-white font-bold">Recherche :</span>
+                                    <span>
+                                        <%= result[0].looking_for %>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-3 w-32 flex flex-col space-y-1 items-center justify-center bg-slate-900/60 rounded-md">
+                                <span class="text-white font-bold">Localisation :</span>
+                                <span>
+                                    <%= JSON.parse(result[0].location).city.name %>
+                                </span>
+                                <span>
+                                    <%= JSON.parse(result[0].location).city.zip %>
+                                </span>
+                                <span>
+                                    <%= JSON.parse(result[0].location).city.country %>
+                                </span>
                             </div>
                         </div>
                     </div>
